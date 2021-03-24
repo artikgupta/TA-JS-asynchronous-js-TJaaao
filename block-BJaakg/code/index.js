@@ -39,21 +39,41 @@ function createUI(arr) {
       characters
     );
     characters.addEventListener("click", () => {
-      let arr = [];
-      let charactersData = ele.characters.map((val) => fetch(val));
-      Promise.all(charactersData).then((v) =>
-        v.forEach((item) => {
-          item.then((data) => arr.push(data.json()));
-        })
-      );
-      console.log(arr);
+      let container = document.createElement("div");
+      container.classList.add("modal");
+      let crossBtn = document.createElement("span");
+      crossBtn.innerText = "X";
+      crossBtn.classList.add("cross-btn");
+      crossBtn.addEventListener("click", () => {
+        charactersBox.innerHTML = "";
+        charactersBox.style.display = "none";
+      });
+      ele.characters.slice(0, 24).forEach((url) => {
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => modal(data))
+          .then((ele) => container.append(ele));
+      });
+      container.append(crossBtn);
+      charactersBox.append(container);
+      charactersBox.style.display = "flex";
     });
+    charactersBox.style.display = "none";
+
     root.append(li);
   });
 }
 
-function modal() {
-  let container = document.createElement("div");
-  container.classList.add("modal");
+function modal(data) {
   let li = document.createElement("li");
+  let name = document.createElement("p");
+  let gender = document.createElement("p");
+  let aliases = document.createElement("p");
+  let tvSeries = document.createElement("p");
+  name.innerText = data.name;
+  gender.innerText = data.gender;
+  aliases.innerText = data.aliases;
+  tvSeries.innerText = data.tvSeries;
+  li.append(name, gender, aliases, tvSeries);
+  return li;
 }

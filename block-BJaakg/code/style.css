@@ -16,5 +16,15 @@
 }
 
 .modal {
+  position: relative;
+  background-color: grey;
   width: 50%;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.cross-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
