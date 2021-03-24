@@ -11,13 +11,13 @@
 
 ```js
 const one = new Promise((resolve, reject) =>
-  setTimeout(() => resolve('Arya'), 1000)
+  setTimeout(() => resolve("Arya"), 1000)
 );
 const two = new Promise((resolve, reject) =>
-  setTimeout(() => reject(new Error('Whoops!')), 2000)
+  setTimeout(() => reject(new Error("Whoops!")), 2000)
 );
 const three = new Promise((resolve, reject) =>
-  setTimeout(() => resolve('John'), 3000)
+  setTimeout(() => resolve("John"), 3000)
 );
 ```
 
@@ -26,9 +26,13 @@ const three = new Promise((resolve, reject) =>
 ```js
 Promise.all([
   new Promise((resolve, reject) => {
-    setTimeout(() => resolve('Arya'), 1000);
+    setTimeout(() => resolve("Arya"), 1000);
   }),
-  'Sam',
-  { name: 'John' },
+  "Sam",
+  { name: "John" },
 ]).then(console.log);
+
+//output  ["Arya", "Sam", {…}]
+
+// 1000 ms
 ```
