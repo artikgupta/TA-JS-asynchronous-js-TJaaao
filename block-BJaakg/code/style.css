@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.characters-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: relative;
+  background-color: grey;
+  width: 50%;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.cross-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
